@@ -5,8 +5,8 @@ let operator = null;
 let previousButton = null;
 
 const calculate = (num1, num2) => {
-  num1 = parseInt(num1);
-  num2 = parseInt(num2);
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
   if (operator === "+") {
     result = num1 + num2;
   }
@@ -19,6 +19,7 @@ const calculate = (num1, num2) => {
   if (operator === "x") {
     result = num1 * num2;
   }
+  console.log({ num1, num2 });
   console.log(result);
   display.textContent = result;
 };
@@ -28,7 +29,10 @@ const clearCalc = () => {
 };
 
 const delbtn = () => {
-  (num1 = ""), (num2 = ""), (operator = null), (display["innerHTML"] = "");
+  display.innerHTML = display["innerHTML"].substring(
+    display.innerHTML.length - 1,
+    0
+  );
 };
 
 const handleBtnClick = (e) => {
