@@ -7,19 +7,18 @@ let previousButton = null;
 const calculate = (num1, num2) => {
   num1 = parseInt(num1);
   num2 = parseInt(num2);
-  if ((operator = "+")) {
+  if (operator === "+") {
     result = num1 + num2;
   }
-  if ((operator = "-")) {
+  if (operator === "-") {
     result = num1 - num2;
   }
-  if ((operator = "/")) {
+  if (operator === "/") {
     result = num1 / num2;
   }
-  if ((operator = "x")) {
+  if (operator === "x") {
     result = num1 * num2;
   }
-  //console.log(operator);
   console.log(result);
   display.textContent = result;
 };
@@ -45,15 +44,14 @@ const handleBtnClick = (e) => {
 const handleOperatorClick = (e) => {
   if (e.target.innerText === "=") {
     calculate(num1, num2);
-    //} //else if (operator && num2) {
-    //num1 = result;
-    //num2 = "";
-    //calculate(num1, num2);
-    //operator = e.target.innerText;
+  } else if (operator && num2) {
+    num1 = result;
+    num2 = "";
+    calculate(num1, num2);
+    operator = e.target.innerText;
   } else {
     operator = e.target.innerText;
   }
-  console.log(operator);
 };
 
 const btnNumber = document.querySelectorAll(".number");
