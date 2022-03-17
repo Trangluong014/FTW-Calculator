@@ -3,7 +3,3 @@ let num1 = "";
 let num2 = "";
 let operator = null;
 let previousButton = null;
-
-const addNumber = (num) => {
-  display.textContent = num;
-};
