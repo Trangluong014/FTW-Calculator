@@ -2,11 +2,13 @@ let display = document.querySelector("#display");
 let num1 = "";
 let num2 = "";
 let operator = null;
-let previousButton = null;
+let displayCheck = "num1";
+let result;
 
 const calculate = (num1, num2) => {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
+  displayCheck = "result";
   if (operator === "+") {
     result = num1 + num2;
   }
@@ -20,41 +22,85 @@ const calculate = (num1, num2) => {
     result = num1 * num2;
   }
   console.log({ num1, num2 });
+  console.log(operator);
   console.log(result);
-  display.textContent = result;
+  render();
 };
 
 const clearCalc = () => {
-  (num1 = ""), (num2 = ""), (operator = null), (display["innerHTML"] = "");
+  (num1 = ""),
+    (num2 = ""),
+    (operator = null),
+    (display["innerHTML"] = ""),
+    (displayCheck = "num1");
 };
 
 const delbtn = () => {
-  display.innerHTML = display["innerHTML"].substring(
-    display.innerHTML.length - 1,
-    0
-  );
+  switch (displayCheck) {
+    case "num1":
+      console.log({ num1, num2 });
+      num1 = num1.substring(num1.length - 1, 0);
+      console.log({ num1, num2 });
+      render();
+      break;
+    case "num2":
+      console.log({ num1, num2 });
+      num2 = num2.substring(num2.length - 1, 0);
+      render();
+      break;
+    case "result":
+      (num1 = ""),
+        (num2 = ""),
+        (operator = null),
+        (display["innerHTML"] = ""),
+        (displayCheck = "num1");
+      render();
+      break;
+  }
+};
+
+const equalbtn = () => {
+  calculate(num1, num2);
+};
+
+const render = () => {
+  switch (displayCheck) {
+    case "num1":
+      display.textContent = num1;
+      break;
+    case "num2":
+      display.textContent = num2;
+      break;
+    case "result":
+      display.textContent = result;
+      break;
+  }
 };
 
 const handleBtnClick = (e) => {
-  if (operator) {
-    num2 += e.target.innerText;
-    display.textContent = num2;
-  } else {
+  if (displayCheck === "num1") {
     num1 += e.target.innerText;
-    display.textContent = num1;
+    render();
+  } else if (displayCheck === "num2") {
+    num2 += e.target.innerText;
+    render();
   }
 };
 
 const handleOperatorClick = (e) => {
-  if (e.target.innerText === "=") {
-    calculate(num1, num2);
-  } else if (operator && num2) {
-    calculate(num1, num2);
+  if (displayCheck === "num1") {
+    displayCheck = "num2";
+    operator = e.target.innerText;
+    calculate;
+  } else if (displayCheck === "num2") {
+    operator = e.target.innerText;
+    calculate;
+  } else if (displayCheck === "result") {
+    displayCheck = "num2";
     num1 = result;
     num2 = "";
     operator = e.target.innerText;
-  } else {
-    operator = e.target.innerText;
+    calculate;
   }
 };
 
@@ -73,3 +119,6 @@ btnClear.addEventListener("click", clearCalc);
 
 const btnDel = document.querySelector(".del");
 btnDel.addEventListener("click", delbtn);
+
+const btnEqual = document.querySelector(".equals");
+btnEqual.addEventListener("click", equalbtn);
