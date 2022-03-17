@@ -45,9 +45,9 @@ const handleOperatorClick = (e) => {
   if (e.target.innerText === "=") {
     calculate(num1, num2);
   } else if (operator && num2) {
+    calculate(num1, num2);
     num1 = result;
     num2 = "";
-    calculate(num1, num2);
     operator = e.target.innerText;
   } else {
     operator = e.target.innerText;
