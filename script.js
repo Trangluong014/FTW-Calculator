@@ -53,3 +53,6 @@ const btnOperator = document.querySelectorAll(".operator");
 btnOperator.forEach((btnOperator) =>
   btnOperator.addEventListener("click", handleOperatorClick)
 );
+
+const btnDel = document.querySelector(".del");
+btnDel.addEventListener("click",delete)
