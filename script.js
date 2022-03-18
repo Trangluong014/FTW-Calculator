@@ -11,7 +11,7 @@ let result;
 // - if displayCheck = num 2: add number to num2 => display num2
 // when click operator button:
 // - if displayCheck = num 1: change display check to num 2, get operator
-// - if displayCheck = num2: get operator (I want to make it calculate then put result to num1, add number to num2 to start new calculation but cann't make yet)
+// - if displayCheck = num2: calculate => result=num1, num2 ="",start new calculation
 // - if displayCheck = result: num1 = result, num2= "", displayCheck = num2
 
 //Calculator can calculate decimals with button .
@@ -105,6 +105,9 @@ const handleOperatorClick = (e) => {
     displayCheck = "num2";
     operator = e.target.innerText;
   } else if (displayCheck === "num2") {
+    calculate(num1, num2);
+    num1 = result;
+    num2 = "";
     operator = e.target.innerText;
   } else if (displayCheck === "result") {
     displayCheck = "num2";
@@ -112,6 +115,7 @@ const handleOperatorClick = (e) => {
     num2 = "";
     operator = e.target.innerText;
   }
+  render();
 };
 
 const btnNumber = document.querySelectorAll(".number");
