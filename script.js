@@ -5,6 +5,15 @@ let operator = null;
 let displayCheck = "num1";
 let result;
 
+//use displayCheck to check what is currently appearing in the display
+// when click number button:
+// - if displayCheck = num 1: add number to num1 => display num1
+// - if displayCheck = num 2: add number to num2 => display num2
+// when click operator button:
+// - if displayCheck = num 1: change display check to num 2, get operator
+// - if displayCheck = num2: get operator
+// - if displayCheck = result: num1 = result, num2= "", displayCheck = num2
+
 const calculate = (num1, num2) => {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
@@ -91,16 +100,13 @@ const handleOperatorClick = (e) => {
   if (displayCheck === "num1") {
     displayCheck = "num2";
     operator = e.target.innerText;
-    calculate;
   } else if (displayCheck === "num2") {
     operator = e.target.innerText;
-    calculate;
   } else if (displayCheck === "result") {
     displayCheck = "num2";
     num1 = result;
     num2 = "";
     operator = e.target.innerText;
-    calculate;
   }
 };
 
