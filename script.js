@@ -14,6 +14,10 @@ let result;
 // - if displayCheck = num2: get operator (I want to make it calculate then put result to num1, add number to num2 to start new calculation but cann't make yet)
 // - if displayCheck = result: num1 = result, num2= "", displayCheck = num2
 
+//Calculator can calculate decimals with button .
+// button C is use to clear all data
+// button delete is use to delete 1 charater when display num1, num2 and clear data when display result
+
 const calculate = (num1, num2) => {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
