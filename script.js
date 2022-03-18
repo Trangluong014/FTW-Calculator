@@ -11,7 +11,7 @@ let result;
 // - if displayCheck = num 2: add number to num2 => display num2
 // when click operator button:
 // - if displayCheck = num 1: change display check to num 2, get operator
-// - if displayCheck = num2: get operator
+// - if displayCheck = num2: get operator (I want to make it calculate then put result to num1, add number to num2 to start new calculation but cann't make yet)
 // - if displayCheck = result: num1 = result, num2= "", displayCheck = num2
 
 const calculate = (num1, num2) => {
